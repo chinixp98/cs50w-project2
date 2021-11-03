@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<style>
+    body {
+        background-color: bisque;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <!---------------Panel sala de chat----------------->
+            <div class="row row-cols-2">
+                <div class="col" id="chat">
+                    <h4>Sala de chat</h4>
+                </div>
+
+                <!---------------Mensajes--------------------------->
+                <div class="col" id="mensajes">
+                </div>
+            </div>
+        </div>
+
+        <!-------------Columna canales------------>
+        <div class="col-4">
+            <!---------------Panel de canales------------------->
+            <div class="col" id="canal">
+                <h4>Canales</h4>
+
+                <!---------------Lista de canales------------------->
+                <div id="lista_canal">
+                    {% for channel in channels %}
+                    <div class="row" id="canal-creado">
+                        <a>{{ channel }}</a>
+                    </div>
+                    {% endfor %}
+
+                    <ul>
+                        <input type="text" id="channel-name" placeholder="Nombre del canal">
+                    </ul>
+
+                    <div class="input-group-append">
+                        <button id="add-channel" class="btn btn-primary" type="submit">Crear canal</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Force next columns to break to new line at md breakpoint and up -->
+        <div class="w-100 d-none d-md-block"></div>
+
+        <!----------Columna mensajes---------------------------->
+        <div class="col-12">
+            <div class="row">
+                <!---------------Enviar mensajes-------------------->
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-10">
+                            <form class="chateo form-group">
+                                <input type="text" placeholder="Escribe un mensaje" id="input_chat"
+                                    class="form-control">
+                            </form>
+                            <a href="/logout" class="btn btn-warning" id="cerrar">Cerrar sesion</a>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-primary" type="button" id="enviar" onclick="enviar()">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,134 @@
+body {
+  background-color: blue;
+}
+
+body h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  margin-top: 180px;
+  text-shadow: white 0.1em 0.1em 0.2em;
+  font-size: 80px;
+  font-style: italic;
+}
+
+body h2 {
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body nav {
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+body nav span {
+  margin-left: 15px;
+}
+
+body nav .form-group {
+  width: 1030px;
+}
+
+body p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  color: red;
+}
+
+body .container h4 {
+  font-style: normal;
+  font-size: 25px;
+  margin-top: 8px;
+  color: white;
+  text-align: center;
+  -webkit-text-stroke: 0.5px black;
+}
+
+body #chat {
+  margin-right: 20px;
+  margin-top: 50px;
+  width: 800px;
+  height: 50px;
+  background-color: darkkhaki;
+  border-radius: 15px;
+}
+
+body #canal {
+  margin-top: 50px;
+  width: 300px;
+  height: 50px;
+  background-color: cadetblue;
+  border-radius: 15px;
+}
+
+body #canal h4 {
+  text-align: center;
+}
+
+body #canal ul {
+  color: white;
+}
+
+body #canal #channel-name {
+  margin-top: 10px;
+  width: 300px;
+  height: 50px;
+  background-color: cadetblue;
+  border-radius: 15px;
+}
+
+body #mensajes {
+  margin-right: 20px;
+  margin-top: 10px;
+  width: 800px;
+  height: 400px;
+  background-color: white;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+
+body #mensajes p {
+  color: black;
+  text-align: left;
+  font-size: 15px;
+  font-family: unset;
+}
+
+body #lista_canal {
+  margin-top: 30px;
+  width: 300px;
+  height: 50px;
+  background-color: cadetblue;
+  border-radius: 15px;
+}
+
+body #canal-creado {
+  margin-top: 15px;
+  margin-left: 1px;
+  width: 300px;
+  height: 50px;
+  background-color: cadetblue;
+  border-radius: 15px;
+}
+
+body #canal-creado a {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin-top: 10px;
+  font-style: italic;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  -webkit-text-stroke: 0.5px black;
+}
+
+body #canal-creado :hover {
+  color: darksalmon;
+}
+
+body #cerrar {
+  margin-top: 10px;
+}
+/*# sourceMappingURL=style.css.map */

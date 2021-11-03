@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<style>
+    body {
+        background-color: bisque;
+    }
+</style>
+
+    <h1 class="animate__heartBeat">¡Bienvenido a Flack!</h1>
+    <h2>Introduce nombre de tu usuario para continuar en el chat</h2>
+
+
+
+    <form action="/chat" method="post" id="usuario">
+        <nav class="navbar navbar-dark bg-dark">
+        <form class="container-fluid">
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <div class="form-group">
+                <input id="username" type="text" class="form-control" name="username">
+            </div>
+            <button class="btn btn-primary" type="submit">Entrar</button>
+          </div>
+        </form>
+    </nav>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="animate__heartBeat">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <script>
+        document.querySelector("#usuario").onsubmit = () => {
+             
+            const username = document.querySelector("#username").value
+
+            localStorage.setItem("usuarios", username)
+        }
+    </script>
+
+{% endblock %}
