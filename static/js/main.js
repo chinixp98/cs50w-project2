@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector("#enviar").onclick = () => {
         var mensajes = document.querySelector("#input_chat").value;
         var tiempo = new Date;
-        socket.emit("mensajes", {'msg': mensajes, 'usuario': usuario, 'tiempo': tiempo})
+        socket.emit("mensajes", {'msg': mensajes, 'usuario': usuario, 'tiempo': tiempo.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})})
     }
 
     socket.on("mostrar_mensaje", data => {
@@ -41,6 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(data)
 
-        lista_mensaje.innerHTML += `<p>${ data.usuario } dice:</p> <p>${ data.msg } ${ data.tiempo }</p>`
+        lista_mensaje.innerHTML += `<font color="green" weight="bolder">${ data.usuario }<font size="1" color="gray"> ${ data.tiempo }</font></font><p>${ data.msg } </p>`
     });
 });
+
+// Funciones 
+
+// Funcion para limpiar el localStorage cuando el usuario cierra sesión
+
+function Clear () {
+    localStorage.clear();
+}
+

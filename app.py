@@ -8,16 +8,22 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config['SECRET_KEY'] = "l5qGfXFue2"
 socketio = SocketIO(app, cors_allowed_origins='*')
 
-users = []
+#users = []
 channels = ["General"]
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if "username" in session:
+
+        #if session.get("username") in users:
         return render_template("chat.html", channels = channels)
+        
+        #else:
+            #return render_template("index.html")
 
     else:
         return render_template("index.html")
+
 
 
 @app.route("/chat", methods=["GET", "POST"])
@@ -31,12 +37,12 @@ def chat():
             flash("Debe introducir un usuario")
             return redirect("/")
         
-        if username in users:
-            flash("El usuario ya esta en el chat")
-            return redirect("/")
+        #if username in users:
+            #flash("El usuario ya esta en el chat")
+            #return redirect("/")
                 
-        users.append(username) 
-        session["username"] = username       
+        #users.append(username) 
+        session["username"] = username
         return redirect("/")
     
     else:
@@ -54,7 +60,8 @@ def nuevo_canal(data):
 
     if canal == channels:
         emit("mostrar_canales", {"codigo": "existe", "usuario": usuario})
-    
+
+
     else:
         channels.append(canal)
         emit("mostrar_canales", {"sala": canal, "usuario": usuario})
@@ -73,7 +80,9 @@ def mensaje(data):
 @app.route("/logout")
 def logout():
     
+
     session.clear()
+    
 
     return redirect("/")
     

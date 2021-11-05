@@ -45,39 +45,38 @@
                         <button id="add-channel" class="btn btn-primary" type="submit">Crear canal</button>
                     </div>
                 </div>
-
-            </div>
-        </div>
-
-
-
-
-
-        <!-- Force next columns to break to new line at md breakpoint and up -->
-        <div class="w-100 d-none d-md-block"></div>
-
-        <!----------Columna mensajes---------------------------->
-        <div class="col-12">
-            <div class="row">
-                <!---------------Enviar mensajes-------------------->
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-10">
-                            <form class="chateo form-group">
-                                <input type="text" placeholder="Escribe un mensaje" id="input_chat"
-                                    class="form-control">
-                            </form>
-                            <a href="/logout" class="btn btn-warning" id="cerrar">Cerrar sesion</a>
-                        </div>
-                        <div class="col-2">
-                            <button class="btn btn-primary" type="button" id="enviar" onclick="enviar()">Enviar</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4"></div>
             </div>
         </div>
     </div>
+
+
+
+
+
+    <!-- Force next columns to break to new line at md breakpoint and up -->
+    <div class="w-100 d-none d-md-block"></div>
+
+    <!----------Columna mensajes---------------------------->
+    <div class="col-12">
+        <div class="row">
+            <!---------------Enviar mensajes-------------------->
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-10">
+                        <form class="chateo form-group">
+                            <input type="text" placeholder="Escribe un mensaje" id="input_chat" class="form-control">
+                        </form>
+                        <a onclick="Clear()" href="/logout" class="btn btn-warning" id="cerrar">Cerrar sesion</a>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary" type="button" id="enviar" onclick="enviar()">Enviar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+</div>
 </div>
 
 
