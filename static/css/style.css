@@ -107,6 +107,13 @@ body #lista_canal {
   border-radius: 15px;
 }
 
+body #contenedor-canales {
+  overflow: auto;
+  width: 301px;
+  max-height: 400px;
+  background-color: bisque;
+}
+
 body #canal-creado {
   margin-top: 15px;
   margin-left: 1px;
@@ -116,7 +123,7 @@ body #canal-creado {
   border-radius: 15px;
 }
 
-body #canal-creado a {
+body #canal-creado span {
   text-align: center;
   color: white;
   font-size: 20px;

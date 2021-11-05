@@ -14,7 +14,7 @@
             <!---------------Panel sala de chat----------------->
             <div class="row row-cols-2">
                 <div class="col" id="chat">
-                    <h4>Sala de chat</h4>
+                    <h4>Sala de chat: <span id="nombre-canal"></span></h4>
                 </div>
 
                 <!---------------Mensajes--------------------------->
@@ -31,11 +31,14 @@
 
                 <!---------------Lista de canales------------------->
                 <div id="lista_canal">
-                    {% for channel in channels %}
-                    <div class="row" id="canal-creado">
-                        <a>{{ channel }}</a>
+                    <div id="contenedor-canales">
+                        {% for channel in channels %}
+                        <div class="row" id="canal-creado" onclick="seleccionarCanal('{{ channel }}')">
+                            <span id="sala">{{ channel }}</span>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
+
 
                     <ul>
                         <input type="text" id="channel-name" placeholder="Nombre del canal">

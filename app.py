@@ -58,9 +58,11 @@ def nuevo_canal(data):
 
     usuario = data['usuario']
 
-    if canal == channels:
+    if canal in channels:
         emit("mostrar_canales", {"codigo": "existe", "usuario": usuario})
-
+    
+    elif canal == "":
+        emit("mostrar_canales", {"codigo": "", "usuario": usuario})
 
     else:
         channels.append(canal)
@@ -73,8 +75,41 @@ def mensaje(data):
     print(data)
     print(data['msg'])
 
+  
 
-    emit("mostrar_mensaje", {'msg': data['msg'], 'usuario': data['usuario'], 'tiempo': data['tiempo']}, broadcast = True)
+    emit("mostrar_mensaje", {'msg': data['msg'], 'usuario': data['usuario'], 'tiempo': data['tiempo']}, to = data["sala"])
+
+
+@socketio.on("join")
+def Entrar_Sala(data):
+
+    sala = data["sala"]
+    username = data["username"]
+
+    print("Entrar Sala")
+    print(data)
+
+    join_room(sala)
+
+    emit("mostrar_log", {"msg": f"{username} ha entrado al canal "}, to = sala)
+
+
+@socketio.on("leave")
+def Salir_Sala(data):
+
+    sala = data["sala"]
+    username = data["username"]
+
+    print("Salir Sala")
+    print(data)
+
+    leave_room(sala)
+
+    emit("mostrar_log", {"msg": f"{username} ha salido del canal "}, to = sala)
+
+
+
+
 
 
 @app.route("/logout")

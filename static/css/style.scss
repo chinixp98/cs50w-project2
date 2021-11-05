@@ -123,6 +123,13 @@ body {
         
     } 
 
+    #contenedor-canales {
+        overflow: auto;
+        width: 301px;
+        max-height: 400px;
+        background-color: bisque;
+    }
+
     #canal-creado {
         margin-top: 15px;
         margin-left: 1px;
@@ -131,7 +138,7 @@ body {
         background-color: cadetblue;
         border-radius: $borde;
 
-        a {
+        span {
             text-align: center;
             color: white;
             font-size: 20px;
