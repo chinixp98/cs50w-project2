@@ -156,4 +156,18 @@ body {
     #cerrar {
         margin-top: 10px;
     }    
+
+    #estilo-mensaje {
+        border-radius: 2em;
+        margin: auto; 
+        background-color: whitesmoke;
+        filter: drop-shadow(0px 0px 1px black) ;
+        
+        p {
+            text-align: justify;
+            margin-right: 15px;
+            margin-left: 18px;
+            
+        }
+      }
 }

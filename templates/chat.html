@@ -38,12 +38,15 @@
                         </div>
                         {% endfor %}
                     </div>
-
-
+                    
                     <ul>
-                        <input type="text" id="channel-name" placeholder="Nombre del canal">
+                        <form id="formCanal">
+                            <input type="text" id="channel-name" placeholder="Nombre del canal">
+                        </form>
                     </ul>
+                        
 
+                    
                     <div class="input-group-append">
                         <button id="add-channel" class="btn btn-primary" type="submit">Crear canal</button>
                     </div>
@@ -66,7 +69,7 @@
             <div class="col-8">
                 <div class="row">
                     <div class="col-10">
-                        <form class="chateo form-group">
+                        <form class="chateo form-group" id="formulario1">
                             <input type="text" placeholder="Escribe un mensaje" id="input_chat" class="form-control">
                         </form>
                         <a onclick="Clear()" href="/logout" class="btn btn-warning" id="cerrar">Cerrar sesion</a>
@@ -81,6 +84,7 @@
     </div>
 </div>
 </div>
+
 
 
 {% endblock %}

@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector("#nombre-canal").innerHTML = localStorage.getItem("ultimo-canal");
 
+    const formularioCanal = document.getElementById("formCanal");
+ 
+
     // Para agregar canales :D
 
     document.querySelector("#add-channel").onclick = () => {
@@ -36,11 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
             'usuario': usuario,
             'sala': room
         });
+
+        formularioCanal.reset()
     }
 
     // Mostramos el canal y validamos si existe o aseguramos que hayan puesto algo válido
 
     socket.on("mostrar_canales", data => {
+
         if (data.codigo === "existe"){
             alert("El canal ya existe");
         }
@@ -56,13 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const form1 = document.getElementById("formulario1");
+
     // Evento de enviar mensajes uwu
     document.querySelector("#enviar").onclick = () => {
         var mensajes = document.querySelector("#input_chat").value;
         var tiempo = new Date;
            
         socket.emit("mensajes", {'msg': mensajes, 'usuario': usuario, 'sala': localStorage.getItem("ultimo-canal"), 'tiempo': tiempo.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})})      
+
+        form1.reset();
     }
+
 
     // Se muestra el mensaje :D
 
@@ -71,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log(data)
 
-        lista_mensaje.innerHTML += `<font color="green">${ data.usuario }<font size="1" color="gray"> ${ data.tiempo }</font></font><p>${ data.msg } </p>`
+        lista_mensaje.innerHTML += `<font color="green">${ data.usuario }<font size="1" color="gray"> ${ data.tiempo }</font></font><div id="estilo-mensaje"><p>${ data.msg } </p></div>`
     });
 
         // Enviar mensaje de que entramos o salimos de un canal unu
@@ -114,3 +125,4 @@ function seleccionarCanal (canal) {
         'sala': localStorage.getItem("ultimo-canal")
     })
 }
+

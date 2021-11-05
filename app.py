@@ -1,3 +1,4 @@
+from collections import deque
 import os
 
 from flask import Flask, render_template, request, redirect, url_for, flash, session
@@ -8,19 +9,16 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config['SECRET_KEY'] = "l5qGfXFue2"
 socketio = SocketIO(app, cors_allowed_origins='*')
 
-#users = []
+
 channels = ["General"]
+canalMensaje = dict()
+canalMensaje["General"] = deque(maxlen=100)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if "username" in session:
-
-        #if session.get("username") in users:
         return render_template("chat.html", channels = channels)
-        
-        #else:
-            #return render_template("index.html")
-
+       
     else:
         return render_template("index.html")
 
@@ -37,11 +35,6 @@ def chat():
             flash("Debe introducir un usuario")
             return redirect("/")
         
-        #if username in users:
-            #flash("El usuario ya esta en el chat")
-            #return redirect("/")
-                
-        #users.append(username) 
         session["username"] = username
         return redirect("/")
     
@@ -66,6 +59,8 @@ def nuevo_canal(data):
 
     else:
         channels.append(canal)
+        canalMensaje[canal] = deque(maxlen=100)
+
         emit("mostrar_canales", {"sala": canal, "usuario": usuario})
 
 
@@ -75,10 +70,9 @@ def mensaje(data):
     print(data)
     print(data['msg'])
 
-  
-
     emit("mostrar_mensaje", {'msg': data['msg'], 'usuario': data['usuario'], 'tiempo': data['tiempo']}, to = data["sala"])
 
+    
 
 @socketio.on("join")
 def Entrar_Sala(data):
@@ -92,6 +86,7 @@ def Entrar_Sala(data):
     join_room(sala)
 
     emit("mostrar_log", {"msg": f"{username} ha entrado al canal "}, to = sala)
+
 
 
 @socketio.on("leave")
