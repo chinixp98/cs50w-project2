@@ -180,3 +180,187 @@ body {
     }
 
 }
+
+
+
+//////////// RESPONSIVE ////////////////////
+@media only screen and (max-width: 740px) {
+    body {
+        background-color: blue;
+    
+        h1 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            margin-top: 180px;
+            text-shadow: white 0.1em 0.1em 0.2em;
+            font-size: 80px;
+            font-style: italic;
+        }
+    
+        h2 {
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    
+        nav {
+            margin-right: $margen;
+            margin-left: $margen;
+    
+            span {
+                margin-left: $borde;
+            }
+    
+            .form-group {
+                width: 1030px;
+            }     
+        } 
+    
+        p {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bolder;
+            color: red;
+        }
+    
+    // ------------------------ CHAT -------------------------- // 
+        .container {
+            h4 {
+                font-style: normal;
+                font-size: 15px;
+                margin-top: 5px;
+                color: white;
+                text-align: center;
+                -webkit-text-stroke: 0.5px black;
+            }
+        }
+        #chat {
+            margin-right: 20px;
+            margin-top: 50px;
+            width: 300px;
+            height: 40px;
+            background-color: darkkhaki;
+            border-radius: $borde;
+    
+        } 
+    
+        #canal {
+            margin-top: 50px;
+            width: 150px;
+            height: 40px;
+            background-color: cadetblue;
+            border-radius: $borde;
+           
+            
+    
+            h4 {
+    
+                text-align: center;
+                margin-top: 5px;
+                
+    
+            }
+    
+            ul {
+                color: white;
+            }
+    
+            #channel-name {
+                margin-top: 10px;
+                width: 100px;
+                height: 50px;
+                background-color: cadetblue;
+                border-radius: $borde;
+            }
+        }
+    
+        #mensajes {
+            margin-right: 20px;
+            width: 300px;
+            height: 300px;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            overflow: auto;
+            background-color: white;
+            border-radius: $borde;
+    
+            p {
+                color: black;
+                text-align: left;
+                font-size: 15px;
+                font-family: unset;
+            }
+    
+        } 
+    
+        
+        #lista_canal {
+            margin-top: 30px;
+            width: 100px;
+            height: 50px;
+            background-color: bisque;
+            border-radius: $borde;
+            
+        } 
+    
+        #contenedor-canales {
+            overflow: auto;
+            width: 151px;
+            height: 300px;
+            background-color: bisque;
+        }
+    
+        #canal-creado {
+            margin-top: 15px;
+            margin-left: 1px;
+            width: 120px;
+            height: 50px;
+            background-color: cadetblue;
+            border-radius: $borde;
+    
+            span {
+                text-align: left;
+                color: white;
+                font-size: 10px;
+                margin-top: 10px;
+                font-style: italic;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                -webkit-text-stroke: 0.5px black;
+            }
+    
+            :hover {
+                color: darksalmon;
+            }
+        }
+    
+        #cerrar {
+            margin-top: 10px;
+        }    
+    
+        #estilo-mensaje {
+            border-radius: 2em;
+            margin: auto; 
+            background-color: whitesmoke;
+            filter: drop-shadow(0px 0px 1px black) ;
+            
+            p {
+                text-align: justify;
+                margin-right: 15px;
+                margin-left: 18px;
+                
+            }
+        }
+    
+        .linea {
+            
+            display: inline-block;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+        }
+    
+    }
+
+}

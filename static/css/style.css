@@ -161,4 +161,148 @@ body .linea {
   color: white;
   border-radius: 5px;
 }
+
+@media only screen and (max-width: 740px) {
+  body {
+    background-color: blue;
+  }
+  body h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin-top: 180px;
+    text-shadow: white 0.1em 0.1em 0.2em;
+    font-size: 80px;
+    font-style: italic;
+  }
+  body h2 {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  body nav {
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+  body nav span {
+    margin-left: 15px;
+  }
+  body nav .form-group {
+    width: 1030px;
+  }
+  body p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    color: red;
+  }
+  body .container h4 {
+    font-style: normal;
+    font-size: 15px;
+    margin-top: 5px;
+    color: white;
+    text-align: center;
+    -webkit-text-stroke: 0.5px black;
+  }
+  body #chat {
+    margin-right: 20px;
+    margin-top: 50px;
+    width: 300px;
+    height: 40px;
+    background-color: darkkhaki;
+    border-radius: 15px;
+  }
+  body #canal {
+    margin-top: 50px;
+    width: 150px;
+    height: 40px;
+    background-color: cadetblue;
+    border-radius: 15px;
+  }
+  body #canal h4 {
+    text-align: center;
+    margin-top: 5px;
+  }
+  body #canal ul {
+    color: white;
+  }
+  body #canal #channel-name {
+    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    background-color: cadetblue;
+    border-radius: 15px;
+  }
+  body #mensajes {
+    margin-right: 20px;
+    width: 300px;
+    height: 300px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: auto;
+    background-color: white;
+    border-radius: 15px;
+  }
+  body #mensajes p {
+    color: black;
+    text-align: left;
+    font-size: 15px;
+    font-family: unset;
+  }
+  body #lista_canal {
+    margin-top: 30px;
+    width: 100px;
+    height: 50px;
+    background-color: bisque;
+    border-radius: 15px;
+  }
+  body #contenedor-canales {
+    overflow: auto;
+    width: 151px;
+    height: 300px;
+    background-color: bisque;
+  }
+  body #canal-creado {
+    margin-top: 15px;
+    margin-left: 1px;
+    width: 120px;
+    height: 50px;
+    background-color: cadetblue;
+    border-radius: 15px;
+  }
+  body #canal-creado span {
+    text-align: left;
+    color: white;
+    font-size: 10px;
+    margin-top: 10px;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    -webkit-text-stroke: 0.5px black;
+  }
+  body #canal-creado :hover {
+    color: darksalmon;
+  }
+  body #cerrar {
+    margin-top: 10px;
+  }
+  body #estilo-mensaje {
+    border-radius: 2em;
+    margin: auto;
+    background-color: whitesmoke;
+    -webkit-filter: drop-shadow(0px 0px 1px black);
+            filter: drop-shadow(0px 0px 1px black);
+  }
+  body #estilo-mensaje p {
+    text-align: justify;
+    margin-right: 15px;
+    margin-left: 18px;
+  }
+  body .linea {
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
