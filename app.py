@@ -86,7 +86,7 @@ def mensajes_canal(data):
 
     room = data["room"]
 
-    emit("canal mensaje", {'msj': list(canalMensaje[room])}, to = room)
+    emit("canal mensaje", {'msj': list(canalMensaje[room]), 'usuario': data["usuario"]})
     
 
 @socketio.on("join")
@@ -100,7 +100,7 @@ def Entrar_Sala(data):
 
     join_room(sala)
 
-    emit("mostrar_log", {"msg": f"{username} ha entrado al canal "}, to = sala)
+    emit("mostrar_log", {"msg": f"{username} ha entrado al canal ", "cargar": "si"}, to = sala)
 
 
 
@@ -115,7 +115,7 @@ def Salir_Sala(data):
 
     leave_room(sala)
 
-    emit("mostrar_log", {"msg": f"{username} ha salido del canal "}, to = sala)
+    emit("mostrar_log", {"msg": f"{username} ha salido del canal ", "cargar": "no"}, to = sala)
 
 
 

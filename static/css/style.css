@@ -227,8 +227,8 @@ body .linea {
     color: white;
   }
   body #canal #channel-name {
-    margin-top: 10px;
-    width: 100px;
+    margin-top: 15px;
+    width: 150px;
     height: 50px;
     background-color: cadetblue;
     border-radius: 15px;
@@ -260,7 +260,7 @@ body .linea {
   body #contenedor-canales {
     overflow: auto;
     width: 151px;
-    height: 300px;
+    height: 290px;
     background-color: bisque;
   }
   body #canal-creado {

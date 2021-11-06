@@ -106,18 +106,28 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(data);
 
         lista_mensaje.innerHTML += `<br><font color="red">${ data.msg }</font><br></br>`;
+        
+        if (data.cargar == "si"){
+            socket.emit("mensajes canal", {
+                'room': localStorage.getItem("ultimo-canal"),
+                'usuario': localStorage.getItem("usuarios")
+            });
+        }
 
-        socket.emit("mensajes canal", {
-            'room': localStorage.getItem("ultimo-canal")
-        });
+        
     });
 
-    socket.on("canal mensaje", data => {
-        let msg = document.querySelector("#mensajes");
 
+    socket.on("canal mensaje", data => {
+        if (data.usuario == localStorage.getItem("usuarios")){
+            let msg = document.querySelector("#mensajes");
+
+        msg.innerHTML = ""
+        
         data.msj.forEach(element => {
             msg.innerHTML += `<font color="green">${ element.usuario }<font size="1" color="gray"> ${ element.tiempo }</font></font><div id="estilo-mensaje"><p>${ element.msg } </p></div>`
         });
+        }
     });
 });
 
