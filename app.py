@@ -17,7 +17,7 @@ canalMensaje["General"] = deque(maxlen=100)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if "username" in session:
-        return render_template("chat.html", channels = channels)
+        return render_template("chat.html", channels = channels, canalMensaje=canalMensaje)
        
     else:
         return render_template("index.html")
@@ -53,25 +53,40 @@ def nuevo_canal(data):
 
     if canal in channels:
         emit("mostrar_canales", {"codigo": "existe", "usuario": usuario})
-    
-    elif canal == "":
-        emit("mostrar_canales", {"codigo": "", "usuario": usuario})
 
     else:
         channels.append(canal)
-        canalMensaje[canal] = deque(maxlen=100)
-
-        emit("mostrar_canales", {"sala": canal, "usuario": usuario})
+        emit("mostrar_canales", {"sala": canal, "usuario": usuario}, broadcast = True)
 
 
 @socketio.on("mensajes")
 def mensaje(data):
-
+    global canalMensaje
     print(data)
     print(data['msg'])
+    
+    salas = data["sala"]
+
+    if canalMensaje.get(salas) is None:
+
+        canalMensaje[salas] = deque(maxlen=100)
+
+    canalMensaje[salas].append({'msg': data['msg'], 'usuario': data['usuario'], 'tiempo': data['tiempo']})
+    print("----------------")
+    print("----------------")
+    print("----------------")
+    print(canalMensaje[salas])
 
     emit("mostrar_mensaje", {'msg': data['msg'], 'usuario': data['usuario'], 'tiempo': data['tiempo']}, to = data["sala"])
 
+
+
+@socketio.on("mensajes canal")
+def mensajes_canal(data):
+
+    room = data["room"]
+
+    emit("canal mensaje", {'msj': list(canalMensaje[room])}, to = room)
     
 
 @socketio.on("join")

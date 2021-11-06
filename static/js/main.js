@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Para conectarse a la websocket
     socket = io.connect(location.protocol +'//' + document.domain + ':' + location.port);
-    var room;
+    let room;
 
     // Mi usuario uwu
     var usuario = localStorage.getItem("usuarios");
@@ -35,10 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         room = document.querySelector("#channel-name").value;
 
-        socket.emit ("nuevo_canal", {
-            'usuario': usuario,
-            'sala': room
-        });
+        if (room === ""){
+            alert("Debe tener un nombre el canal.")
+        }
+
+        else if (room === localStorage.getItem("ultimo-canal")){
+            alert("El canal ya existe")
+        }
+
+        else {
+            localStorage.setItem("ultimo-canal", room)
+
+            socket.emit ("nuevo_canal", {
+                'usuario': usuario,
+                'sala': room,
+            });
+        } 
 
         formularioCanal.reset()
     }
@@ -49,10 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (data.codigo === "existe"){
             alert("El canal ya existe");
-        }
-
-        else if (data.codigo === ""){
-            alert("Debe introducir un canal")
         }
 
         else {
@@ -68,9 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector("#enviar").onclick = () => {
         var mensajes = document.querySelector("#input_chat").value;
         var tiempo = new Date;
-           
-        socket.emit("mensajes", {'msg': mensajes, 'usuario': usuario, 'sala': localStorage.getItem("ultimo-canal"), 'tiempo': tiempo.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})})      
 
+        if (mensajes){
+            socket.emit("mensajes", {'msg': mensajes, 'usuario': usuario, 'sala': localStorage.getItem("ultimo-canal"), 'tiempo': tiempo.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})})
+        }
+
+        else {
+            document.querySelector("#input_chat").focus();
+        }
+            
         form1.reset();
     }
 
@@ -87,11 +101,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Enviar mensaje de que entramos o salimos de un canal unu
     socket.on("mostrar_log", data => {
-        var lista_mensaje = document.querySelector("#mensajes")
+        var lista_mensaje = document.querySelector("#mensajes");
 
-        console.log(data)
+        console.log(data);
 
-        lista_mensaje.innerHTML += `<br><font color="red">${ data.msg }</font><br></br>`
+        lista_mensaje.innerHTML += `<br><font color="red">${ data.msg }</font><br></br>`;
+
+        socket.emit("mensajes canal", {
+            'room': localStorage.getItem("ultimo-canal")
+        });
+    });
+
+    socket.on("canal mensaje", data => {
+        let msg = document.querySelector("#mensajes");
+
+        data.msj.forEach(element => {
+            msg.innerHTML += `<font color="green">${ element.usuario }<font size="1" color="gray"> ${ element.tiempo }</font></font><div id="estilo-mensaje"><p>${ element.msg } </p></div>`
+        });
     });
 });
 

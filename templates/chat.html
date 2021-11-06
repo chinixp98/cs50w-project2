@@ -44,8 +44,6 @@
                             <input type="text" id="channel-name" placeholder="Nombre del canal">
                         </form>
                     </ul>
-                        
-
                     
                     <div class="input-group-append">
                         <button id="add-channel" class="btn btn-primary" type="submit">Crear canal</button>
@@ -75,7 +73,8 @@
                         <a onclick="Clear()" href="/logout" class="btn btn-warning" id="cerrar">Cerrar sesion</a>
                     </div>
                     <div class="col-2">
-                        <button class="btn btn-primary" type="button" id="enviar" onclick="enviar()">Enviar</button>
+                            <button class="linea" type="button" id="enviar" onclick="enviar()">Enviar</button>
+                            <button id="emojibtn" class="linea">😀</button>
                     </div>
                 </div>
             </div>
@@ -85,6 +84,19 @@
 </div>
 </div>
 
+<script>
+    let emojibutton = document.querySelector("#emojibtn");
+    let picker = new EmojiButton();
 
+    window.addEventListener("DOMContentLoaded", () => {
+        picker.on('emoji', emoji => {
+            document.querySelector("#input_chat").value += emoji;
+        });
+
+        emojibutton.addEventListener('click', () => {
+            picker.togglePicker(emojibutton);
+        })
+    });
+</script>
 
 {% endblock %}
